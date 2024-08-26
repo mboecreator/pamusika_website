@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="category1.css">
+</head>
+<body>
+    <div class="product-category">
+     
+
+          <h1>Campus Outfitter Approved</h1>
+          <br>
+        <h1>Welcome to Our University Apparel Store!
+        <br>
+        Elevate Your Campus Style</h1>
+        <br>
+        <p>Whether you're searching for game day gear or everyday casual wear, <br>our University Apparel Store has everything you need <br>to look and feel your best on campus.</p>
+        br
+        <div class="product-list">
+          <div class="product-item">
+            <a href="images/yembe.jpg" class="image-link">
+                <img src="images/yembe.jpg" alt="Product 1">
+            </a>
+            <h3>iPhone 13 Pro Max</h3>
+            <p>$800</p>
+            <button class="add-to-cart" data-product-id="1">Add to Cart</button>
+            
+          </div>
+          <div class="product-item">
+            <a href="images/11.jpg" class="image-link">
+                <img src="images/11.jpg" alt="Product 2">
+            </a>
+            <h3>iPhone 14 Pro Max</h3>
+            <p>$1250</p>
+            <button class="add-to-cart" data-product-id="1">Add to Cart</button>
+          </div>
+          <div class="product-item">
+            <a href="images/clo4.jpeg" class="image-link">
+                <img src="images/clo4.jpeg" alt="Product 2">
+            </a>
+            <h3>iPhone X</h3>
+            <p>$280</p>
+            <button>Add to Cart</button>
+          </div>
+          <!-- Add more product items as needed -->
+        </div>
+      </div>
+
+      <div class="checkout-container">
+        <h2>Checkout</h2>
+        <div class="cart-summary">
+          <br>
+          <h3>Cart Summary</h3>
+          <ul>
+            <!-- Display cart items here -->
+          </ul>
+          <p>Subtotal: $<span id="subtotal"></span></p>
+          <br>
+        </div>
+        <br>
+        <div class="shipping-options">
+          <br>
+          <h3>Shipping Options</h3>
+          <ul>
+            <li>
+              <input type="radio" id="shipping-option-1" name="shipping-option">
+              <label for="shipping-option-1">Delivery ($10)</label>
+            </li>
+            <li>
+              <input type="radio" id="shipping-option-2" name="shipping-option">
+              <label for="shipping-option-2">In-store pickup (Free)</label>
+            </li>
+          </ul>
+        </div>
+        <br>
+        <div class="payment-methods">
+          <br>
+          <h3>Payment Methods</h3>
+          <ul>
+            <li>
+              <input type="radio" id="payment-method-1" name="payment-method">
+              <label for="payment-method-1">Credit Card</label>
+            </li>
+            <li>
+              <input type="radio" id="payment-method-2" name="payment-method">
+              <label for="payment-method-2">PayPal</label>
+            </li>
+          </ul>
+        </div>
+        <br>
+        <button id="place-order-btn">Place Order</button>
+      </div>
+
+      <div class="comments-section">
+        <h2>Customer Reviews</h2>
+        <div class="comments-list">
+          <!-- Display comments here -->
+        </div>
+        <div class="add-comment">
+          <h3>Leave a Review</h3>
+          <textarea placeholder="Share your thoughts..."></textarea>
+          <button id="submit-comment-btn">Submit</button>
+        </div>
+      </div>
+      
+
+      <section class="footer">
+        <h4>About Us</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Expedita suscipit doloribus perferendis omnis, mollitia <br> veritatis sunt eum  
+            reiciendis quas vel voluptate ut laudantium eos <br> excepturi! Iste nam velit consequuntur explicabo?</p>
+
+            <div class="icons">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-linkedin"></i>
+            </div>
+            <p>Made with <i class="fa fa-heart-o"></i> by Excellent </p>
+    </section>
+      
+
+
+
+
+<script>
+      const addToCartButtons = document.querySelectorAll('.add-to-cart');
+      let cart = [];
+      
+      addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const productId = button.dataset.productId;
+          const productName = button.previousElementSibling.previousElementSibling.textContent;
+          const productPrice = parseFloat(button.previousElementSibling.textContent.slice(1));
+          const product = {
+            id: productId,
+            name: productName,
+            price: productPrice,
+            quantity: 1
+          };
+          addToCart(product);
+          updateCartUI();
+        });
+      });
+      
+      function addToCart(product) {
+        // Check if the product is already in the cart
+        const existingProduct = cart.find(item => item.id === product.id);
+        if (existingProduct) {
+          // Increment the quantity of the existing product
+          existingProduct.quantity++;
+        } else {
+          // Add the new product to the cart
+          cart.push(product);
+        }
+      }
+      
+      function updateCartUI() {
+        // Update the cart UI, such as displaying the number of items or the total cost
+        console.log('Cart:', cart);
+      }
+
+      const checkoutContainer = document.querySelector('.checkout-container');
+    const placeOrderBtn = document.querySelector('#place-order-btn');
+
+    placeOrderBtn.addEventListener('click', () => {
+    // Get cart items and shipping option
+    const cartItems = [];
+    const shippingOption = document.querySelector('input[name="shipping-option"]:checked').value;
+    const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+    // Create order object
+    const order = {
+        items: cartItems,
+        shippingOption,
+        paymentMethod
+    };
+
+    // Send order to server for processing
+    fetch('/place-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(order)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle payment response
+        if (data.paymentUrl) {
+        window.location.href = data.paymentUrl;
+        } else {
+        console.error('Error processing payment');
+        }
+    })
+    .catch(error => console.error('Error placing order:', error));
+    });
+    
+
+    app.post('/place-order', (req, res) => {
+        const order = req.body;
+        const paymentMethod = order.paymentMethod;
+      
+        // Create payment intent
+        stripe.paymentIntents.create({
+          amount: order.subtotal,
+          currency: 'usd',
+          payment_method_types: [paymentMethod]
+        })
+        .then(paymentIntent => {
+          // Return payment URL to client
+          res.json({
+            paymentUrl: paymentIntent.payment_method_types[0].payment_url
+          });
+        })
+        .catch(err => {
+          console.error(err);
+          res.status(500).json({ error: 'Failed to create payment intent' });
+        });
+      });
+      
+      // Handle payment response from Stripe
+      app.post('/payment-response', (req, res) => {
+        const paymentIntentId = req.body.payment_intent;
+        const paymentStatus = req.body.payment_status;
+      
+        // Update order status based on payment status
+        if (paymentStatus === 'succeeded') {
+          // Update order status to "paid"
+          // ...
+        } else if (paymentStatus === 'failed') {
+          // Update order status to "failed"
+          // ...
+        }
+      
+        res.json({ message: 'Payment response received' });
+      });
+
+
+      // Get the comment section elements
+      const commentsList = document.querySelector('.comments-list');
+      const addCommentForm = document.querySelector('.add-comment');
+      const submitCommentBtn = document.querySelector('#submit-comment-btn');
+
+      // Initialize an array to store comments
+      let comments = [];
+
+      // Function to add a comment to the list
+      function addComment(comment) {
+        const commentItem = document.createElement('div');
+        commentItem.classList.add('comment-item');
+        commentItem.innerHTML = `
+          <p>${comment.text}</p>
+          <span class="comment-author">${comment.author}</span>
+          <span class="comment-date">${comment.date}</span>
+        `;
+        commentsList.appendChild(commentItem);
+      }
+
+      // Function to submit a comment
+      submitCommentBtn.addEventListener('click', () => {
+        const commentText = addCommentForm.querySelector('textarea').value;
+        const commentAuthor = 'Anonymous'; // You can add a field for author input
+        const commentDate = new Date().toLocaleString();
+
+        // Create a new comment object
+        const newComment = {
+          text: commentText,
+          author: commentAuthor,
+          date: commentDate
+        };
+
+        // Add the new comment to the comments array
+        comments.push(newComment);
+
+        // Add the comment to the comments list
+        addComment(newComment);
+
+        // Clear the comment input field
+        addCommentForm.querySelector('textarea').value = '';
+      });
+
+      // Load any existing comments (you can fetch them from a database or API)
+      // Example:
+      comments = [
+        { text: 'Great store! I found exactly what I was looking for.', author: 'John Doe', date: '2023-10-26' },
+        { text: 'Love the selection of university apparel!', author: 'Jane Smith', date: '2023-10-25' }
+      ];
+
+      // Add existing comments to the comments list
+      comments.forEach(comment => addComment(comment));
+
+</script>
+</body>
+</html>

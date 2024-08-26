@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  background: transparent;
+}
+
+.categories {
+    background-color: #f7f7f7;
+    padding: 20px;
+    text-align: center;
+  }
+  .product-categories h1{
+    text-align: center;
+  }
+  .category-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+
+  .category-list {
+    background-image: url('images/background-online.jpg'); /* Replace 'your-background-image.jpg' with the actual image path */
+    background-size: cover;
+    background-position: center;
+  }
+
+
+  .category {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    width: calc(33.33% - 40px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .category i {
+    font-size: 40px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .category h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .category p {
+    font-size: 18px;
+    color: #0c0202;
+  }
+
+.product-categories {
+  max-width: 1200px; /* Adjust this value to control the container's width */
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-item {
+    width: 30%;
+    margin: 20px;
+    text-align: center;
+}
+
+.category-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.category-item h2 {
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+.category-item p {
+    font-size: 16px;
+    color: #0b0808ef;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #3e8e41;
+}
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.image-grid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+  /*footer*/
+  .footer{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+.footer h4{
+    margin-bottom: 25px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.footer p{
+    font-size: 16px;
+    color: #666;
+}
+
+.course-col{
+  flex-basis: 31%;
+  background: hwb(0 96% 0%);  
+}
+.course-col:hover{
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.footer{
+  flex-basis: 31%;
+  background: hwb(0 96% 0%);  
+}
+.footer:hover{
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}

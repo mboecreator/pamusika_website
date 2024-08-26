@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBusinessWebsite</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="#">HOME</a>
+            <a href="#">ABOUT</a>
+            <a href="#">SERVICES</a>
+            <a href="#">CONTACT</a>
+        </nav>
+    </header>
+    <div class="background"></div>
+    <div class="container">
+        <div class="content">
+            <div class="text-overlay">
+                <div class="text-sci">
+                    <h1>Welcome!! <br><span>To Our Pamusika Platform</span></h1>
+                    <div style="background-color: #1b15154d; padding: 6px; border-radius: 10px;">
+                        <p><strong></strong></p>
+                        <p><strong><em>Sign in now to view</em> a world of tech possibilities. 
+                        <br>
+                        <p>Let our experts guide you to the perfect solutions for your digital dreams.Unleash the power of the future with our cutting-edge gadgets. 
+                        </p>
+                        Explore our vast selection of the hottest tech trends - from smartphones to virtual reality and beyond!</strong></p>
+                        <p>Our Services, Your Priority</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logreg-box">
+            <div class="form-box login">
+                <form id="sign-in-form">
+                    <h1>Sign In</h1>
+
+                    <div class="input-box">
+                        <span class="icon"><i class="fas fa-envelope"></i></span>
+                        <input type="username" id="username" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="password" required>
+                        <label for="password">Password</label>
+                        <i class="fa fa-eye show-hide" style="color: #FFFFFF;"></i>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">Remember me</label>
+                        <a href="#">Forgot password</a>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit" class="btn">Sign In <a href="sign-in.html" class="sign-in-link"></a></button>
+                    </div>
+                    <br>
+                    <div class="login-register">
+                        <p>Don't have an account? <a href="register.html" class="register-link">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <section class="facilities">
+        <h1>Our facilities</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <div class="row">
+          <div class="facilities-col">
+            <a href="images/gro.webp" class="image-link">
+              <img src="images/gro.webp" alt="Largest Play Ground">
+            </a>
+            <h3>Largest Play Ground</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+          <div class="facilities-col">
+            <a href="images/111.jpeg" class="image-link">
+              <img src="images/111.jpeg" alt="Our Largest Chapel">
+            </a>
+            <h3>Our Largest Chapel</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+          <div class="facilities-col">
+            <a href="images/yembe.jpg" class="image-link">
+              <img src="images/yembe.jpg" alt="Our Largest Library">
+            </a>
+            <h3>Our Largest Library</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+      </section>
+
+    <section class="footer">
+        <h4>About Us</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Expedita suscipit doloribus perferendis omnis, mollitia <br> veritatis sunt eum  
+            reiciendis quas vel voluptate ut laudantium eos <br> excepturi! Iste nam velit consequuntur explicabo?</p>
+
+            <div class="icons">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-linkedin"></i>
+            </div>
+            <p>Made with <i class="fa fa-heart-o"></i> by Excellent </p>
+    </section>
+
+
+
+    <script>
+        const signInForm = document.getElementById('sign-in-form');
+        const passwordInput = document.getElementById('password');
+        const showHideBtn = document.querySelector('.show-hide');
+
+        signInForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = passwordInput.value;
+
+            // Validate the email and password 
+            if (username === 'r234621j' && password === '00000000') {
+                // Redirect the user to the other page
+                window.location.href = 'sign-in.html';
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        });
+        
+        showHideBtn.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                showHideBtn.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                showHideBtn.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+    </script>
+</body>
+</html>
