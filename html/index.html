@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Agriculture Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Agriculture Monitoring</h1>
+        <div class="dashboard">
+            <div class="sensor-data">
+                <h2>Real-Time Sensor Data</h2>
+                <p>Soil Moisture: <span id="soil-moisture">--</span>%</p>
+                <p>Temperature: <span id="temperature">--</span>°C</p>
+                <p>Humidity: <span id="humidity">--</span>%</p>
+                <p>Light Intensity: <span id="light-intensity">--</span> lux</p>
+            </div>
+            <div class="chart">
+                <canvas id="sensorChart"></canvas>
+            </div>
+        </div>
+        <div class="weather">
+            <h2>Weather Forecast</h2>
+            <p id="weather-info">Loading...</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
